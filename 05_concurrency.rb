@@ -30,4 +30,15 @@ class ConcurrencyExample
 end
 
 x = ConcurrencyExample.new
+start_time = Time.now
 x.concurrently_do_work([35,35,35,35]) # => takes 4x as long as one iteration
+end_time = Time.now
+
+diff = end_time - start_time
+puts "Took #{diff}" # => Took 5.125619
+
+start_time = Time.now
+x.concurrently_do_work([35])
+end_time = Time.now
+diff = end_time - start_time
+puts "Took #{diff}" # => Took 1.252302
